@@ -1,5 +1,5 @@
 CC      := gcc
-CFLAGS  := -MMD -O2 -I./include -Wall -Werror
+CFLAGS  := -MMD -O2 -I./include -Wall -Werror -fcommon
 LDFLAGS := -lallegro -lallegro_main -lallegro_primitives
 
 CFILES  := $(shell find src -name "*.c")
@@ -9,7 +9,7 @@ build/%.o: src/%.c
 	@echo + CC $< "->" $@
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c -o $@ $<
- 
+
 litenes: $(OBJS)
 	@echo + LD "->" $@
 	@$(CC) $(OBJS) $(LDFLAGS) -o litenes
